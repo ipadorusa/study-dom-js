@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {margin:0;padding:0}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  background: salmon;
+  overflow: hidden;
+}
+nav ul {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  justify-content: space-around;
+}
+nav li {
+  color: white;
+  display: inline-block;
+  -webkit-box-flex: 1;
+          flex: 1 0 auto;
+  font-weight: 700;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+nav .active {
+  color: crimson;
+}
+
+section {
+  color: white;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  height: 75vh;
+}
+section:nth-of-type(1) {
+  background: cornflowerblue;
+}
+section:nth-of-type(2) {
+  background: aqua;
+}
+section:nth-of-type(3) {
+  background: antiquewhite;
+}
+section:nth-of-type(4) {
+  background: darkgray;
+}
+section:nth-of-type(5) {
+  background: maroon;
+}
+
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>Section 1</li>
+				<li>Section 2</li>
+				<li>Section 3</li>
+				<li>Section 4</li>
+				<li>Section 5</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="content">
+		<section id="row1" class="row">
+			<h1>Section 1</h1>
+		</section>
+		<section id="row2" class="row">
+			<h1>Section 2</h1>
+		</section>
+		<section id="row3" class="row">
+			<h1>Section 3</h1>
+		</section>
+		<section id="row4" class="row">
+			<h1>Section 4</h1>
+		</section>
+		<section id="row5" class="row">
+			<h1>Section 5</h1>
+		</section>
+	</div>
+	<script src="sc.js"></script>
+</body>
+</html>

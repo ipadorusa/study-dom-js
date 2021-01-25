@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {margin:0;padding:0}
+		.box_drop {border:1px dashed #dbdbdb;width:500px;height:500px;display:flex;flex-flow:column wrap;justify-content: center;align-items: center;}
+		.btn {width:100px;height:50px;background-color:blue;color:#fff}
+		input[type="file"] {display:none}
+	</style>
+</head>
+<body>
+	<div class="box_drop">
+		<input type="file" multiple id="input_file">
+		<button type="button" class="btn">Upload</button>
+	</div>
+	<div id="list">
+
+	</div>
+
+	<script>
+		var btn = document.querySelector('.btn');
+		var input = document.querySelector('#input_file');
+		var $list = document.querySelector('#list');
+		var dropZone = document.querySelector('.box_drop');
+
+		btn.addEventListener('click', () => {
+			document.querySelector('#input_file').click();
+		});
+
+		input.addEventListener('change', updateVal);
+
+		function updateVal(e) {
+			var html = '';
+			for(var i=0,len=e.target.files.length;i<len;i++) {
+				html += '<div>' + e.target.files[i].name + '</div>';
+			}
+			$list.innerHTML = html;
+		}
+
+		dropZone.addEventListener('dragover', (e) => {
+			e.preventDefault();
+		});
+
+		dropZone.addEventListener('dragleave', (e) => {
+			e.preventDefault();
+		});
+
+		dropZone.addEventListener('drop', (e) => {
+			updateVal(e);
+			e.preventDefault();
+		});
+
+		
+		</script>
+</body>
+</html>
