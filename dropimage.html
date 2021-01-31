@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Document</title>
+	<style>
+		* {margin:0;padding:0}
+		#draggable {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    background: white;
+  }
+
+  .dropzone {
+    width: 200px;
+    height: 20px;
+    background: blueviolet;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+	</style>
+</head>
+<body>
+	<div class="wrap_drop">
+		<div class="dropzone">
+			<div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+					This div is draggable
+			</div>
+		</div>
+		<div class="dropzone">
+			
+		</div>
+		<div class="dropzone"></div>
+		<div class="dropzone"></div>
+	</div>
+	<script>
+		let dropZone = document.querySelector('.wrap_drop');
+		var dragged;
+
+		/* events fired on the draggable target */
+
+
+		dropZone.addEventListener("dragstart", function( event ) {
+				// store a ref. on the dragged elem
+				dragged = event.target;
+				// make it half transparent
+				event.target.style.opacity = .5;
+		}, false);
+
+		dropZone.addEventListener("dragend", function( event ) {
+				// reset the transparency
+				event.target.style.opacity = "";
+		}, false);
+
+		/* events fired on the drop targets */
+		dropZone.addEventListener("dragover", function( event ) {
+				// prevent default to allow drop
+				event.preventDefault();
+		}, false);
+
+		dropZone.addEventListener("dragenter", function( event ) {
+				// highlight potential drop target when the draggable element enters it
+				if ( event.target.className == "dropzone" ) {
+						event.target.style.background = "purple";
+				}
+
+		}, false);
+
+		dropZone.addEventListener("dragleave", function( event ) {
+				// reset background of potential drop target when the draggable element leaves it
+				if ( event.target.className == "dropzone" ) {
+						event.target.style.background = "";
+				}
+
+		}, false);
+
+		dropZone.addEventListener("drop", function( event ) {
+				// prevent default action (open as link for some elements)
+				event.preventDefault();
+				console.log(event)
+				// move dragged elem to the selected drop target
+				if ( event.target.className == "dropzone" ) {
+						event.target.style.background = "";
+						dragged.parentNode.removeChild( dragged );
+						event.target.appendChild( dragged );
+				}
+			
+		}, false);
+	</script>
+
+</body>
+</html>

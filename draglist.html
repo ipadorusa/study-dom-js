@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			background-color: #333;
+			padding: 1rem;
+			margin-top: 1rem;
+		}
+
+		.draggable {
+			padding: 1rem;
+			background-color: white;
+			border: 1px solid black;
+			cursor: move;
+		}
+
+		.draggable.dragging {
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+	<ul class="container">
+		<li class="draggable" draggable="true">
+			<button type="button">1</button>
+		</li>
+		<li class="draggable" draggable="true">
+			<button type="button">2</button>
+		</li>
+		<li class="draggable" draggable="true">
+			<button type="button">3</button>
+		</li>
+		<li class="draggable" draggable="true">
+			<button type="button">4</button>
+		</li>
+	</ul>
+	<script src="drag.js"></script>
+</body>
+</html>
